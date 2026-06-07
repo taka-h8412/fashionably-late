@@ -9,31 +9,31 @@
         body {
             margin: 0;
             color: brown;
-            font-family: serif;
         }
 
         .header {
-            border-bottom: 1px solid gainsboro;
             padding: 20px 40px;
+            border-bottom: 1px solid gainsboro;
             text-align: center;
             position: relative;
         }
 
-        .header__logo {
+        .header h1 {
+            margin: 0;
             font-size: 32px;
             font-weight: normal;
-            margin: 0;
+            font-family: serif;
         }
 
-        .header__link {
+        .header a {
             position: absolute;
             top: 22px;
             right: 40px;
             padding: 6px 18px;
             border: 1px solid tan;
             color: tan;
-            text-decoration: none;
             background-color: snow;
+            text-decoration: none;
         }
 
         .content {
@@ -42,11 +42,12 @@
             padding: 40px 20px;
         }
 
-        .content__heading {
+        .content h2 {
+            margin-bottom: 40px;
             text-align: center;
             font-size: 30px;
             font-weight: normal;
-            margin-bottom: 40px;
+            font-family: serif;
         }
 
         .button {
@@ -65,8 +66,7 @@
 </head>
 <body>
     <header class="header">
-        <h1 class="header__logo">FashionablyLate</h1>
-
+        <h1>FashionablyLate</h1>
         @yield('header')
     </header>
 
