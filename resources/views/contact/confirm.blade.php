@@ -123,6 +123,9 @@
     <input type="hidden" name="gender" value="{{ $contact['gender'] }}">
     <input type="hidden" name="email" value="{{ $contact['email'] }}">
     <input type="hidden" name="tel" value="{{ $contact['tel'] }}">
+    <input type="hidden" name="tel1" value="{{ $contact['tel1'] }}">
+    <input type="hidden" name="tel2" value="{{ $contact['tel2'] }}">
+    <input type="hidden" name="tel3" value="{{ $contact['tel3'] }}">
     <input type="hidden" name="address" value="{{ $contact['address'] }}">
     <input type="hidden" name="building" value="{{ $contact['building'] }}">
     <input type="hidden" name="detail" value="{{ $contact['detail'] }}">
