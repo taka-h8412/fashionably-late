@@ -39,6 +39,7 @@
         text-align: center;
     }
 
+    /* 修正ボタン(Link風) */
     .back-button {
         margin-left: 20px;
         border: none;
