@@ -54,7 +54,7 @@ erDiagram
     users {
         bigint id PK
         varchar name "NOT NULL"
-        varchar email UK "NOT NULL"
+        varchar email "NOT NULL"
         varchar password "NOT NULL"
         timestamp created_at
         timestamp updated_at
