@@ -45,7 +45,7 @@ erDiagram
         varchar email "NOT NULL"
         varchar tel "NOT NULL"
         varchar address "NOT NULL"
-        varchar building "NULL"
+        varchar building
         text detail "NOT NULL"
         timestamp created_at
         timestamp updated_at
