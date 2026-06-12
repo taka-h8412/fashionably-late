@@ -4,26 +4,74 @@
 
 ## 環境構築
 
-※ 2026年6月12日に、GitHubからcloneした環境で動作確認しながら手順を完成させます。
+### Dockerビルド
 
-1. リポジトリをclone
-2. `.env.example`から`.env`を作成
-3. Composerパッケージをインストール
-4. Dockerコンテナを起動
-5. APP_KEYを生成
-6. データベース設定
-7. マイグレーションとシーディングを実行
+1. リポジトリをクローンします。
 
-## 使用技術
+```bash
+git clone https://github.com/taka-h8412/fashionably-late.git
+```
 
-- PHP 8.5
-- Laravel 10
-- Laravel Fortify
-- MySQL 8.4
-- Docker
-- Laravel Sail
+2. プロジェクトディレクトリへ移動します。
 
-※ バージョンは最終確認後に修正します。
+```bash
+cd fashionably-late
+```
+
+3. 環境変数ファイルを作成します。
+
+```bash
+cp .env.example .env
+```
+
+4. Composerパッケージをインストールします。
+
+```bash
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    -e COMPOSER_CACHE_DIR=/tmp/composer_cache \
+    laravelsail/php85-composer:latest \
+    composer install --ignore-platform-reqs
+```
+
+5. `.env` のデータベース設定を次のように変更します。
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=sail
+DB_PASSWORD=password
+```
+
+6. Dockerコンテナを起動します。
+
+```bash
+./vendor/bin/sail up -d
+```
+
+### Laravel環境構築
+
+1. アプリケーションキーを生成します。
+
+```bash
+./vendor/bin/sail artisan key:generate
+```
+
+2. マイグレーションとシーディングを実行します。
+
+```bash
+./vendor/bin/sail artisan migrate:fresh --seed
+```
+
+## 使用技術（実行環境）
+
+- PHP 8.5.5
+- Laravel 10.50.2
+- MySQL 8.4.9
 
 ## ER図
 
@@ -65,7 +113,7 @@ erDiagram
 
 ## URL
 
-- お問い合わせフォーム：`http://localhost/`
+- お問い合わせ入力画面：`http://localhost/`
+- 会員登録画面：`http://localhost/register`
+- ログイン画面：`http://localhost/login`
 - 管理画面：`http://localhost/admin`
-- 会員登録：`http://localhost/register`
-- ログイン：`http://localhost/login`
