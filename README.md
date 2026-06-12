@@ -32,22 +32,11 @@ docker run --rm \
     -v "$(pwd):/var/www/html" \
     -w /var/www/html \
     -e COMPOSER_CACHE_DIR=/tmp/composer_cache \
-    laravelsail/php85-composer:latest \
+    laravelsail/php82-composer:latest \
     composer install --ignore-platform-reqs
 ```
 
-5. `.env` のデータベース設定を次のように変更します。
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=laravel
-DB_USERNAME=sail
-DB_PASSWORD=password
-```
-
-6. Dockerコンテナを起動します。
+5. Dockerコンテナを起動します。
 
 ```bash
 ./vendor/bin/sail up -d
