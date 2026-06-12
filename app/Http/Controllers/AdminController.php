@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Contact;
 use App\Models\Category;
+use App\Models\Contact;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -32,10 +32,10 @@ class AdminController extends Controller
             $keyword = $request->keyword; // 名前とメールアドレスのキーワード検索
 
             $query->where(function ($query) use ($keyword) {
-                $query->where('last_name', 'like', '%' . $keyword . '%') // 姓検索
-                    ->orWhere('first_name', 'like', '%' . $keyword . '%') // 名検索
-                    ->orWhereRaw("CONCAT(last_name, first_name) LIKE ?", ['%' . $keyword . '%']) // フルネーム検索
-                    ->orWhere('email', 'like', '%' . $keyword . '%'); //メールアドレス検索
+                $query->where('last_name', 'like', '%'.$keyword.'%') // 姓検索
+                    ->orWhere('first_name', 'like', '%'.$keyword.'%') // 名検索
+                    ->orWhereRaw('CONCAT(last_name, first_name) LIKE ?', ['%'.$keyword.'%']) // フルネーム検索
+                    ->orWhere('email', 'like', '%'.$keyword.'%'); // メールアドレス検索
             });
         }
 
@@ -51,7 +51,7 @@ class AdminController extends Controller
             $query->whereDate('created_at', $request->date); // 日付(created_at)検索
         }
 
-        $contacts = $query->paginate(7)->appends($request->query()); //検索結果を7件ずつページネーション、appends()で、ページ移動後も検索条件を維持
+        $contacts = $query->paginate(7)->appends($request->query()); // 検索結果を7件ずつページネーション、appends()で、ページ移動後も検索条件を維持
 
         $categories = Category::all(); // 検索フォームのお問い合わせ種類selectで使う
 
@@ -71,10 +71,10 @@ class AdminController extends Controller
             $keyword = $request->keyword; // 名前とメールアドレスのキーワード検索
 
             $query->where(function ($query) use ($keyword) {
-                $query->where('last_name', 'like', '%' . $keyword . '%')
-                    ->orWhere('first_name', 'like', '%' . $keyword . '%')
-                    ->orWhereRaw("CONCAT(last_name, first_name) LIKE ?", ['%' . $keyword . '%'])
-                    ->orWhere('email', 'like', '%' . $keyword . '%');
+                $query->where('last_name', 'like', '%'.$keyword.'%')
+                    ->orWhere('first_name', 'like', '%'.$keyword.'%')
+                    ->orWhereRaw('CONCAT(last_name, first_name) LIKE ?', ['%'.$keyword.'%'])
+                    ->orWhere('email', 'like', '%'.$keyword.'%');
             });
         }
 
@@ -95,7 +95,7 @@ class AdminController extends Controller
         $callback = function () use ($contacts) {
             $file = fopen('php://output', 'w'); // ブラウザにCSVとして出力するための準備
 
-            fputs($file, "\xEF\xBB\xBF"); // Excelで文字化けしないようにBOMを付ける
+            fwrite($file, "\xEF\xBB\xBF"); // Excelで文字化けしないようにBOMを付ける
 
             foreach ($contacts as $contact) { // CSV用に文字へ変換する
                 if ($contact->gender == 1) {

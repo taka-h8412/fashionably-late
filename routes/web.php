@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');

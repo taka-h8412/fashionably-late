@@ -34,8 +34,8 @@ class ContactFactory extends Factory
             'last_name' => $faker->lastName(),
             'gender' => $faker->numberBetween(1, 3),
             'email' => $faker->unique()->safeEmail(),
-            'tel' => '090' . $faker->numberBetween(10000000, 99999999), // 090 + 8桁の数字
-            'address' => $faker->prefecture() . $faker->city() . $faker->streetAddress(), // 都道府県＋市区町村＋番地
+            'tel' => '090'.$faker->numberBetween(10000000, 99999999), // 090 + 8桁の数字
+            'address' => $faker->prefecture().$faker->city().$faker->streetAddress(), // 都道府県＋市区町村＋番地
             'building' => $faker->randomElement($buildings),
             'detail' => $details[$categryId], // お問い合わせ種類に対応した内容を入れる
         ];

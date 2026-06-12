@@ -28,16 +28,25 @@
             font-family: serif;
         }
 
+        /* ヘッダー右側のリンクボタンとログアウトボタン */
+        .header a,
+        .header-button {
+            padding: 6px 18px;
+            border: 1px solid tan;
+            color: tan;
+            background-color: snow;
+            font-size: 16px;
+            font-family: inherit;
+            line-height: normal;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
         /* ヘッダー右側のリンクボタン */
         .header a {
             position: absolute;
             top: 22px;
             right: 40px;
-            padding: 6px 18px;
-            border: 1px solid tan;
-            color: tan;
-            background-color: snow;
-            text-decoration: none;
         }
 
         /* ログアウトフォームをヘッダー右側に配置する */
@@ -45,15 +54,6 @@
             position: absolute;
             top: 22px;
             right: 40px;
-        }
-
-        /* ログアウトボタン */
-        .header-button {
-            padding: 6px 18px;
-            border: 1px solid tan;
-            color: tan;
-            background-color: snow;
-            cursor: pointer;
         }
 
         /* 各画面のメインコンテンツ幅と中央寄せ */
@@ -92,7 +92,8 @@
     <header class="header">
         <h1>FashionablyLate</h1>
 
-        @auth {{-- ログインしていて、管理画面の場合のみ表示 --}}
+        {{-- ログインしていて、管理画面の場合のみlogout表示 --}}
+        @auth
             @if (request()->routeIs('admin.*'))
                 <form class="logout-form" action="/logout" method="POST">
                     @csrf

@@ -125,7 +125,7 @@
     <div class="form-group">
         <label class="form-label">メールアドレス<span style="color: red;">※</span></label>
         <div class="form-input">
-            <input class="input" type="email" name="email" placeholder="例: test@example.com" value="{{ old('email') }}">
+            <input class="input" type="text" name="email" placeholder="例: test@example.com" value="{{ old('email') }}"> {{-- T1 ブラウザ側のバリデーションが先に動くため、typeをemailからtextへ変更 --}}
             @error('email')
                 <p class="error">{{ $message }}</p>
             @enderror

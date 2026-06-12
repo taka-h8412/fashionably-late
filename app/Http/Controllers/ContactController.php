@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ContactRequest;
 use App\Models\Category;
 use App\Models\Contact;
-use App\Http\Requests\ContactRequest;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
@@ -20,7 +20,7 @@ class ContactController extends Controller
     {
         $contact = $request->validated(); // バリデーション済みの入力内容を取得
 
-        $contact['tel'] = $request->tel1 . $request->tel2 . $request->tel3; // 3分割された電話番号を1つにまとめる
+        $contact['tel'] = $request->tel1.$request->tel2.$request->tel3; // 3分割された電話番号を1つにまとめる
 
         $category = Category::find($request->categry_id); // 選択されたお問い合わせ種類を取得
 

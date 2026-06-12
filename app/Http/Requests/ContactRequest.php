@@ -18,9 +18,9 @@ class ContactRequest extends FormRequest
             'first_name' => 'required|string|max:8',
             'gender' => 'required',
             'email' => 'required|email|max:255',
-            'tel1' => 'required|regex:/^[0-9]+$/|max:5',
-            'tel2' => 'required|regex:/^[0-9]+$/|max:5',
-            'tel3' => 'required|regex:/^[0-9]+$/|max:5',
+            'tel1' => 'required|regex:/^[0-9]+$/|max:5', // 半角指定
+            'tel2' => 'required|regex:/^[0-9]+$/|max:5', // 半角指定
+            'tel3' => 'required|regex:/^[0-9]+$/|max:5', // 半角指定
             'address' => 'required|string',
             'building' => 'nullable|string',
             'categry_id' => 'required', // 仕様書のカラム名 categry_id
